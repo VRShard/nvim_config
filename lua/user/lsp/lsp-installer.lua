@@ -25,3 +25,5 @@ lspconfig.tsserver.setup(opts)
 lspconfig.gopls.setup(opts)
 
 lspconfig.pyright.setup(opts)
+
+lspconfig.taplo.setup(opts)
