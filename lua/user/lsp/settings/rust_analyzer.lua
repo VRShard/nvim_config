@@ -40,7 +40,7 @@ local local_opt = {
                         enable = true,
                     },
                     references = {
-                        enable = true,
+                        enable = false,
                     },
                     documentation = {
                         enable = true,
@@ -73,7 +73,10 @@ local local_opt = {
                 run = { enable = true },
             },
             procMacro = {
-                enable = true
+                enable = true,
+                attributes = {
+                    enable = true
+                }
             },
             -- highlightRelated = {
             --     references = true,
