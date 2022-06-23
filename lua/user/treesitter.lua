@@ -22,5 +22,47 @@ configs.setup {
         enable_autocmd = false,
     },
 }
--- vim.o.foldmethod = 'expr'
--- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+local remember_fold_id = vim.api.nvim_create_augroup("remember_fold", {
+    clear = true
+})
+vim.api.nvim_create_autocmd("BufWinLeave", {
+    group = remember_fold_id,
+    pattern = "?*",
+    callback = function()
+        if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
+            -- print("not used here")
+            -- return
+        else
+            vim.cmd [[silent! mkview]]
+        end
+        return false
+    end
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = remember_fold_id,
+    pattern = "?*",
+    callback = function()
+        if vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
+            -- print("not used here")
+            -- return
+        else
+            vim.cmd [[silent! loadview]]
+        end
+        return false
+    end
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*" },
+    --command = "normal zx",
+    callback = function()
+        if vim.bo.buftype == "nofile" then
+            -- print("not used here")
+            -- return
+        else
+            vim.cmd [[normal zx]]
+        end
+        return false
+    end
+})
