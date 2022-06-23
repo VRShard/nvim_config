@@ -47,6 +47,7 @@ return packer.startup(function(use)
     use 'lewis6991/impatient.nvim'
     use "windwp/nvim-autopairs"
     use "tpope/vim-surround"
+    use "tpope/vim-repeat"
     use "numToStr/Comment.nvim"
     use { 'akinsho/bufferline.nvim', branch = "main", requires = 'kyazdani42/nvim-web-devicons' }
     use "moll/vim-bbye"
@@ -63,7 +64,10 @@ return packer.startup(function(use)
     use 'Luxed/ayu-vim'
     --use "Shatur/neovim-ayu"
 
-    use "ggandor/lightspeed.nvim"
+    -- use "ggandor/lightspeed.nvim"
+    use { "ggandor/leap.nvim",
+        config = function() require("leap").set_default_keymaps() end
+    }
 
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
