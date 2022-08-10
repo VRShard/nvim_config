@@ -51,6 +51,7 @@ return packer.startup(function(use)
     use "numToStr/Comment.nvim"
     use { 'akinsho/bufferline.nvim', branch = "main", requires = 'kyazdani42/nvim-web-devicons' }
     use "moll/vim-bbye"
+    use "mfussenegger/nvim-dap"
     use 'antoinemadec/FixCursorHold.nvim'
 
     use {
