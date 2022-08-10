@@ -49,3 +49,4 @@ end
 --    autocmd BufWinEnter ?* loadview
 --  augroup END
 --]]
+vim.cmd [[set autoread | au CursorHold * checktime]]
