@@ -27,3 +27,11 @@ lspconfig.gopls.setup(opts)
 lspconfig.pyright.setup(opts)
 
 lspconfig.taplo.setup(opts)
+
+lspconfig.omnisharp.setup(vim.tbl_deep_extend(
+    "force",
+    {
+        use_mono = true;
+    },
+    opts
+))
