@@ -95,8 +95,9 @@ M.setup = function(_, opts)
     local_opt = vim.tbl_deep_extend("force", local_opt, opts)
     local final_opts = {
         tools = {
-            autoSetHints = true,
+            -- autoSetHints = true,
             inlay_hints = {
+                auto = true,
                 -- wheter to show parameter hints with the inlay hints or not
                 show_parameter_hints = true,
                 -- prefix for parameter hints

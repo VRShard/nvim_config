@@ -73,7 +73,7 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     --use 'nvim-lua/lsp_extensions.nvim'
-    use { 'simrat39/rust-tools.nvim', branch = "modularize_and_inlay_rewrite" }
+    use { 'simrat39/rust-tools.nvim', branch = "master" }
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
     -- use "jose-elias-alvarez/null-ls.nvim"
     -- use({
