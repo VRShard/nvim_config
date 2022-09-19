@@ -59,7 +59,7 @@ return packer.startup(function(use)
     }
     use { 'nvim-telescope/telescope-ui-select.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-    use { "sainnhe/gruvbox-material" }
+    use { "sainnhe/everforest" }
     use 'marko-cerovac/material.nvim'
     use 'Luxed/ayu-vim'
     --use "Shatur/neovim-ayu"
