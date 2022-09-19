@@ -122,7 +122,7 @@ M.on_attach = function(client, bufnr)
         --     end
         -- end
     end
-    lsp_keymaps(bufnr)
+    --[[ lsp_keymaps(bufnr) ]]
     lsp_highlight_document(client)
 end
 
