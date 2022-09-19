@@ -52,7 +52,7 @@ return packer.startup(function(use)
     use { 'akinsho/bufferline.nvim', branch = "main", requires = 'kyazdani42/nvim-web-devicons' }
     use "moll/vim-bbye"
     use "mfussenegger/nvim-dap"
-    --[[ use 'antoinemadec/FixCursorHold.nvim' ]]
+    use 'antoinemadec/FixCursorHold.nvim'
 
     use { 'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
