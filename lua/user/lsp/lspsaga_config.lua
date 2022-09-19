@@ -6,7 +6,7 @@ end
 saga.init_lsp_saga({
     -- Options with default value
     -- "single" | "double" | "rounded" | "bold" | "plus"
-    border_style = "double",
+    border_style = "rounded",
     --the range of 0 for fully opaque window (disabled) to 100 for fully
     --transparent background. Values between 0-30 are typically most useful.
     saga_winblend = 20,
@@ -109,7 +109,7 @@ saga.init_lsp_saga({
         auto_enter = true,
         auto_preview = true,
         virt_text = '┃',
-        jump_key = 'o',
+        jump_key = '<CR>',
         -- auto refresh when change buffer
         auto_refresh = true,
     },
@@ -132,10 +132,10 @@ local keymap = vim.keymap.set --[[ vim.api.nvim_buf_set_keymap ]]
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
 
 -- Code action
-keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+--[[ keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) ]]
 
 -- Rename
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+--[[ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts) ]]
 
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow
@@ -144,10 +144,10 @@ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
 keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
 
 -- Show line diagnostics
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+keymap("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
 -- Show cursor diagnostic
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+keymap("n", "gl", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
@@ -167,10 +167,10 @@ keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
--- Float terminal
-keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", opts)
--- if you want pass somc cli command into terminal you can do like this
--- open lazygit in lspsaga float terminal
-keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm gitui<CR>", opts)
--- close floaterm
-keymap("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], opts)
+--[[ -- Float terminal ]]
+--[[ keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", opts) ]]
+--[[ -- if you want pass somc cli command into terminal you can do like this ]]
+--[[ -- open lazygit in lspsaga float terminal ]]
+--[[ keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm gitui<CR>", opts) ]]
+--[[ -- close floaterm ]]
+--[[ keymap("t", "<A-d>", "<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>", opts) ]]

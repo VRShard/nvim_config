@@ -120,6 +120,7 @@ local mappings = {
             "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
             "Undo Stage Hunk",
         },
+        v = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle line blame" },
         o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
@@ -131,7 +132,12 @@ local mappings = {
 
     l = {
         name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+        a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+        r = { "<cmd>Lspsaga rename<CR>", "Rename" },
+        --[[ h = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Finder" }, ]]
+        f = { "<cmd>lua vim.lsp.buf.format { async=true }<cr>", "Format" },
+        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         d = {
             "<cmd>Telescope lsp_document_diagnostics<cr>",
             "Document Diagnostics",
@@ -140,9 +146,6 @@ local mappings = {
             "<cmd>Telescope lsp_workspace_diagnostics<cr>",
             "Workspace Diagnostics",
         },
-        f = { "<cmd>lua vim.lsp.buf.format { async=true }<cr>", "Format" },
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
         j = {
             "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
             "Next Diagnostic",
@@ -151,14 +154,13 @@ local mappings = {
             "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
             "Prev Diagnostic",
         },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-        r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
             "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
             "Workspace Symbols",
         },
+        i = { "<cmd>LspInfo<cr>", "Info" },
+        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     },
     s = {
         name = "Search",
