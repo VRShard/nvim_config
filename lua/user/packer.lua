@@ -54,8 +54,7 @@ return packer.startup(function(use)
     use "mfussenegger/nvim-dap"
     use 'antoinemadec/FixCursorHold.nvim'
 
-    use {
-        'nvim-telescope/telescope.nvim',
+    use { 'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use { 'nvim-telescope/telescope-ui-select.nvim' }
@@ -107,15 +106,13 @@ return packer.startup(function(use)
 
     use "lukas-reineke/indent-blankline.nvim"
 
-    use {
-        'nvim-lualine/lualine.nvim',
+    use { 'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     use "nvim-lua/lsp-status.nvim"
     --use "arkav/lualine-lsp-progress"
 
-    use {
-        'kyazdani42/nvim-tree.lua',
+    use { 'kyazdani42/nvim-tree.lua',
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
@@ -124,8 +121,7 @@ return packer.startup(function(use)
     use { "akinsho/toggleterm.nvim", branch = "main" }
     use "folke/which-key.nvim"
 
-    use {
-        'abecodes/tabout.nvim',
+    use { 'abecodes/tabout.nvim',
         config = function()
             require('tabout').setup {
                 tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
@@ -151,8 +147,7 @@ return packer.startup(function(use)
         after = { 'cmp-nvim-lua' } -- if a completion plugin is using tabs load it before
     }
 
-    use {
-        "luukvbaal/stabilize.nvim",
+    use { "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
     }
 
