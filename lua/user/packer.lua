@@ -111,6 +111,9 @@ return packer.startup(function(use)
     }
     use "nvim-lua/lsp-status.nvim"
     --use "arkav/lualine-lsp-progress"
+    use({ "glepnir/lspsaga.nvim",
+        branch = "version_2.2",
+    })
 
     use { 'kyazdani42/nvim-tree.lua',
         requires = {
@@ -151,7 +154,14 @@ return packer.startup(function(use)
         config = function() require("stabilize").setup() end
     }
 
-    use 'simrat39/symbols-outline.nvim'
+    use { 'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+    --[[ use { 'simrat39/symbols-outline.nvim', ]]
+    --[[     config = function() require("symbols-outline").setup() end ]]
+    --[[ } ]]
 
     use "f-person/auto-dark-mode.nvim"
 
