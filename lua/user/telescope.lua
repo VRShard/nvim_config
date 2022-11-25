@@ -11,6 +11,7 @@ telescope.setup {
         prompt_prefix = " ",
         selection_caret = " ",
         path_display = { "smart" },
+        winblend = 0,
 
         mappings = {
             i = {
@@ -25,7 +26,14 @@ telescope.setup {
                 ["<Down>"] = actions.move_selection_next,
                 ["<Up>"] = actions.move_selection_previous,
 
-                ["<CR>"] = actions.select_default,
+                ["<CR>"] = function(prompt_bufnr)
+                    vim.cmd.stopinsert()
+                    vim.schedule(
+                        function()
+                            actions.select_default(prompt_bufnr)
+                        end
+                    )
+                end,
                 ["<C-x>"] = actions.select_horizontal,
                 ["<C-v>"] = actions.select_vertical,
                 ["<C-t>"] = actions.select_tab,
