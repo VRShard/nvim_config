@@ -89,6 +89,46 @@ return packer.startup(function(use)
     use 'marko-cerovac/material.nvim'
     use 'Luxed/ayu-vim'
     --use "Shatur/neovim-ayu"
+    --[[ use({ "EdenEast/nightfox.nvim", ]]
+    --[[     config = function() ]]
+    --[[         require('nightfox').setup({ ]]
+    --[[             options = { ]]
+    --[[                 dim_inactive = true, ]]
+    --[[                 styles = { -- Style to be applied to different syntax groups ]]
+    --[[                     comments = "italic", -- Value is any valid attr-list value `:help attr-list` ]]
+    --[[                     conditionals = "bold", ]]
+    --[[                     constants = "bold", ]]
+    --[[                     functions = "NONE", ]]
+    --[[                     keywords = "bold,italic", ]]
+    --[[                     numbers = "NONE", ]]
+    --[[                     operators = "bold", ]]
+    --[[                     strings = "bold,italic", ]]
+    --[[                     types = "NONE", ]]
+    --[[                     variables = "NONE", ]]
+    --[[                 }, ]]
+    --[[                 inverse = { -- Inverse highlight for different types ]]
+    --[[                     match_paren = true, ]]
+    --[[                     visual = false, ]]
+    --[[                     search = false, ]]
+    --[[                 }, ]]
+    --[[             }, ]]
+    --[[             palettes = { ]]
+    --[[                 dawnfox = { ]]
+    --[[                     bg1 = "#f4f6f6", ]]
+    --[[                     fg1 = "#005661", ]]
+    --[[                 } ]]
+    --[[             }, ]]
+    --[[             groups = { ]]
+    --[[                 dawnfox = { ]]
+    --[[                     ["@something"] = { ]]
+    --[[                         style = "bold" ]]
+    --[[                     } ]]
+    --[[]]
+    --[[                 } ]]
+    --[[             } ]]
+    --[[         }) ]]
+    --[[     end, ]]
+    --[[ }) ]]
 
     -- use "ggandor/lightspeed.nvim"
     use { "ggandor/leap.nvim",
@@ -102,13 +142,11 @@ return packer.startup(function(use)
     --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
     use "williamboman/mason.nvim" -- simple to use language server installer
     -- use "jose-elias-alvarez/null-ls.nvim"
-    -- use({
-    --     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    --     config = function()
-    --         require("lsp_lines").register_lsp_virtual_lines()
-    --     end,
-    -- })
-
+    --[[ use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", ]]
+    --[[     config = function() ]]
+    --[[         require("lsp_lines").setup() ]]
+    --[[     end, ]]
+    --[[ }) ]]
     -- cmp
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
