@@ -59,7 +59,14 @@ return packer.startup(function(use)
     use "mfussenegger/nvim-dap"
     use "rcarriga/nvim-dap-ui"
     use 'antoinemadec/FixCursorHold.nvim'
-
+    use { 'rmagatti/auto-session', }
+    use {
+        'rmagatti/session-lens',
+        requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+        config = function()
+            require('session-lens').setup({})
+        end
+    }
     use { 'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
