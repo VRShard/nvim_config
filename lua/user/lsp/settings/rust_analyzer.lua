@@ -92,8 +92,9 @@ local local_opt = {
 local M = {}
 M.setup = function(_, opts)
     --todo
+    local user_home = os.getenv('HOME')
     local_opt = vim.tbl_deep_extend("force", opts, local_opt)
-    local extension_path = "/Users/viera/.local/share/nvim/mason/packages/codelldb/extension/"
+    local extension_path = user_home .. "/.local/share/nvim/mason/packages/codelldb/extension/"
     local codelldb_path = extension_path .. 'adapter/codelldb'
     local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
     local final_opts = {
