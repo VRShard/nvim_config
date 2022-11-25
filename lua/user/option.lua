@@ -3,7 +3,7 @@ local options = {
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
     cmdheight = 2, -- more space in the neovim command line for displaying messages
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-    conceallevel = 0, -- so that `` is visible in markdown files
+    conceallevel = 2, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
     hlsearch = true, -- highlight all matches on previous search pattern
     ignorecase = true, -- ignore case in search patterns
@@ -33,7 +33,8 @@ local options = {
     scrolloff = 8, -- is one of my fav
     sidescrolloff = 8,
     linebreak = true,
-    guifont = "Operator Mono SSm Lig Book:h14", -- the font used in graphical neovim applications
+    guifont = "Operator Mono SSm Lig Book:h10", -- the font used in graphical neovim applications
+    --[[ guifont = "IBM Plex Mono Text,Symbols Nerd Font Mono:h12", ]]
 }
 
 --vim.opt.shortmess:append "c"
@@ -50,3 +51,6 @@ end
 --  augroup END
 --]]
 vim.cmd [[set autoread | au CursorHold * checktime]]
+
+
+vim.cmd "au BufNewFile,BufRead *.wgsl set filetype=wgsl"
