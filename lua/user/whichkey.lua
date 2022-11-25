@@ -160,7 +160,7 @@ local mappings = {
             "Workspace Symbols",
         },
         i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+        I = { "<cmd>Mason<cr>", "Installer Info" },
     },
     s = {
         name = "Search",

@@ -73,7 +73,8 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" -- enable LSP
     --use 'nvim-lua/lsp_extensions.nvim'
     use { 'simrat39/rust-tools.nvim', branch = "master" }
-    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+    --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
+    use "williamboman/mason.nvim" -- simple to use language server installer
     -- use "jose-elias-alvarez/null-ls.nvim"
     -- use({
     --     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
