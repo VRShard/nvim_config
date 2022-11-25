@@ -50,7 +50,7 @@ saga.init_lsp_saga({
     -- you may need to increase this value
     finder_request_timeout = 1500,
     finder_action_keys = {
-        open = "o",
+        open = "<CR>",
         vsplit = "s",
         split = "i",
         tabe = "t",
@@ -130,6 +130,7 @@ local keymap = vim.keymap.set --[[ vim.api.nvim_buf_set_keymap ]]
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
 
 -- Code action
 --[[ keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) ]]
@@ -141,7 +142,7 @@ keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
 -- you can edit the definition file in this flaotwindow
 -- also support open/vsplit/etc operation check definition_action_keys
 -- support tagstack C-t jump back
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+keymap("n", "gp", "<cmd>Lspsaga peek_definition<CR>", opts)
 
 -- Show line diagnostics
 keymap("n", "gL", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)

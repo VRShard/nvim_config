@@ -92,6 +92,7 @@ M.on_attach = function(client, bufnr)
     --end
     lsp_status.on_attach(client)
     if client.name == "rust_analyzer" then
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
         vim.cmd [[
               augroup change_inlayHinthand
                 autocmd! * <buffer>
@@ -133,6 +134,6 @@ if not status_ok then
     return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
