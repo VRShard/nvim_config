@@ -49,7 +49,7 @@ return packer.startup(function(use)
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
     use "numToStr/Comment.nvim"
-    use { 'akinsho/bufferline.nvim', branch = "main", requires = 'kyazdani42/nvim-web-devicons' }
+    use { 'akinsho/bufferline.nvim', branch = "main", requires = 'nvim-tree/nvim-web-devicons' }
     use "moll/vim-bbye"
     use "mfussenegger/nvim-dap"
     use 'antoinemadec/FixCursorHold.nvim'
@@ -98,8 +98,32 @@ return packer.startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
 
     --use { "nvim-telescope/telescope-file-browser.nvim" }
-    use 'kyazdani42/nvim-web-devicons'
+    use { 'nvim-tree/nvim-web-devicons', config = function()
+        local _devicons = require 'nvim-web-devicons'
+        if _devicons.has_loaded() then
+            _devicons.set_icon {
+                scm = {
+                    icon = "ƛ",
+                    color = "#428850",
+                    cterm_color = "65",
+                    name = "Scheme"
+                }
+            }
+        else
+            _devicons.setup {
+                override = {
+                    scm = {
+                        icon = "ƛ",
+                        color = "#428850",
+                        cterm_color = "65",
+                        name = "Scheme"
+                    }
+                };
+            }
+        end
+    end }
     use { 'nvim-treesitter/nvim-treesitter', run = ":TSUpdate" } -- Tree-sitter
+    --[[ use { 'nvim-treesitter/nvim-treesitter-context' } -- Tree-sitter ]]
     use "p00f/nvim-ts-rainbow"
     use 'nvim-treesitter/playground'
     use "JoosepAlviste/nvim-ts-context-commentstring"
@@ -107,7 +131,7 @@ return packer.startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
 
     use { 'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use "nvim-lua/lsp-status.nvim"
     --use "arkav/lualine-lsp-progress"
@@ -115,9 +139,9 @@ return packer.startup(function(use)
         branch = "version_2.2",
     })
 
-    use { 'kyazdani42/nvim-tree.lua',
+    use { 'nvim-tree/nvim-tree.lua',
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            'nvim-tree/nvim-web-devicons', -- optional, for file icon
         },
     }
 
