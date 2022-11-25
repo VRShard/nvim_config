@@ -92,7 +92,10 @@ local local_opt = {
 local M = {}
 M.setup = function(_, opts)
     --todo
-    local_opt = vim.tbl_deep_extend("force", local_opt, opts)
+    local_opt = vim.tbl_deep_extend("force", opts, local_opt)
+    local extension_path = "/Users/viera/.local/share/nvim/mason/packages/codelldb/extension/"
+    local codelldb_path = extension_path .. 'adapter/codelldb'
+    local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
     local final_opts = {
         tools = {
             -- autoSetHints = true,
@@ -108,7 +111,11 @@ M.setup = function(_, opts)
                 highlight = "Comment",
             },
         },
-        server = local_opt
+        server = local_opt,
+        dap = {
+            adapter = require('rust-tools.dap').get_codelldb_adapter(
+                codelldb_path, liblldb_path)
+        }
     }
     require 'rust-tools'.setup(final_opts)
 end

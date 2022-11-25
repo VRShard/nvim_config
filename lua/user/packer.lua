@@ -45,6 +45,11 @@ return packer.startup(function(use)
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
     use 'lewis6991/impatient.nvim'
+    use({ "rcarriga/nvim-notify",
+        config = function()
+            vim.notify = require("notify")
+        end
+    })
     use "windwp/nvim-autopairs"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
@@ -52,6 +57,7 @@ return packer.startup(function(use)
     use { 'akinsho/bufferline.nvim', branch = "main", requires = 'nvim-tree/nvim-web-devicons' }
     use "moll/vim-bbye"
     use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
     use 'antoinemadec/FixCursorHold.nvim'
 
     use { 'nvim-telescope/telescope.nvim',
@@ -138,6 +144,12 @@ return packer.startup(function(use)
     --use "arkav/lualine-lsp-progress"
     use({ "glepnir/lspsaga.nvim",
         branch = "main",
+    })
+    use({ "folke/trouble.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+        end
     })
 
     use { 'nvim-tree/nvim-tree.lua',
