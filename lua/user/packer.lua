@@ -72,6 +72,19 @@ return packer.startup(function(use)
     }
     use { 'nvim-telescope/telescope-ui-select.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use {
+        "narutoxy/silicon.lua",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require('silicon').setup({
+                font = "IBM Plex Mono",
+                debug = true,
+                theme = "material",
+                lineNumber = false,
+            })
+        end
+    }
+
     use { "sainnhe/everforest" }
     use 'marko-cerovac/material.nvim'
     use 'Luxed/ayu-vim'
