@@ -3,7 +3,7 @@ require('lualine').setup {
         icons_enabled = true,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        disabled_filetypes = { "Outline", "NvimTree" },
+        disabled_filetypes = { "Outline", "NvimTree", "lspsagaoutline" },
         always_divide_middle = true,
         theme = "gruvbox"
     },

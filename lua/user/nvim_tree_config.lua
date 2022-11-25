@@ -44,17 +44,20 @@ nvim_tree.setup {
         "alpha",
     },
     renderer = {
-        add_trailing = false,
+        add_trailing = true,
         group_empty = false,
         highlight_git = false,
         highlight_opened_files = "icons", --"none",
         root_folder_modifier = ":~",
         indent_markers = {
-            enable = false,
+            enable = true,
+            inline_arrows = true,
             icons = {
-                corner = "└ ",
-                edge = "│ ",
-                none = "  ",
+                corner = "└",
+                edge = "│",
+                item = "│",
+                bottom = "─",
+                none = " ",
             },
         },
         icons = {
@@ -128,8 +131,8 @@ nvim_tree.setup {
         timeout = 500,
     },
     view = {
-        width = 30,
-        height = 30,
+        width = 40,
+        --[[ height = 30, ]]
         hide_root_folder = false,
         side = "left",
         -- auto_resize = true,
