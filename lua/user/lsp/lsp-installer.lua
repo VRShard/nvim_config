@@ -2,6 +2,7 @@ local status_ok, lsp_installer = pcall(require, "mason")
 if not status_ok then
     return
 end
+local user_home = os.getenv('HOME')
 lsp_installer.setup()
 
 local lsp_status = require("lsp-status")
@@ -39,6 +40,17 @@ lspconfig.omnisharp.setup(vim.tbl_deep_extend(
     "force",
     {
         use_mono = true;
+        cmd = { "dotnet", user_home .. "/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+        ["csharp"] = {
+            inlayHints = {
+                parameters = {
+                    enabled = true,
+                },
+                types = {
+                    enabled = true,
+                },
+            }
+        }
     },
     opts
 ))
