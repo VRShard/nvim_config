@@ -105,7 +105,7 @@ saga.init_lsp_saga({
         --set special filetype win that outline window split.like NvimTree neotree
         -- defx, db_ui
         win_with = '',
-        win_width = 30,
+        win_width = 80,
         auto_enter = true,
         auto_preview = true,
         virt_text = '┃',
@@ -163,7 +163,7 @@ keymap("n", "]E", function()
 end, opts)
 
 -- Outline
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts)
+keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)

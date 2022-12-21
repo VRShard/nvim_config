@@ -1,10 +1,16 @@
-require('lualine').setup {
+local status_ok, lualine_config = pcall(require, "lualine")
+if not status_ok then
+    return
+end
+
+lualine_config.setup {
     options = {
         icons_enabled = true,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        disabled_filetypes = { "Outline", "NvimTree", "lspsagaoutline" },
+        disabled_filetypes = { "Outline", "toggleterm", "lspsagaoutline" },
         always_divide_middle = true,
+        globalstatus = true,
         theme = "gruvbox"
     },
     sections = {
