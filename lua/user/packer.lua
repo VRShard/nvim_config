@@ -50,6 +50,7 @@ return packer.startup(function(use)
             vim.notify = require("notify")
         end
     })
+    use 'simnalamburt/vim-mundo'
     use "windwp/nvim-autopairs"
     use "tpope/vim-surround"
     use "tpope/vim-repeat"
