@@ -123,6 +123,16 @@ M.on_attach = function(client, bufnr)
         --     end
         -- end
     end
+    if client.name == "omnisharp" then
+        client.server_capabilities.semanticTokensProvider.legend = {
+            tokenModifiers = { "static" },
+            tokenTypes = { "comment", "excluded", "identifier", "keyword", "number", "operator",
+                "preprocessor", "string", "whitespace", "text", "static", "punctuation",
+                "class", "delegate", "enum", "interface", "module", "struct", "typeParameter", "field",
+                "enumMember", "constant", "local", "parameter", "method", "property", "event", "namespace",
+                "label", "xml", "regexp" }
+        }
+    end
     --[[ lsp_keymaps(bufnr) ]]
     lsp_highlight_document(client)
 end

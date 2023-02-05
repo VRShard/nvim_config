@@ -1,3 +1,7 @@
+require("neodev").setup({
+    -- add any options here, or leave empty to use the default settings
+})
+
 local local_opt = {
     cmd = { "lua-language-server", "--preview" },
     settings = {
@@ -19,6 +23,9 @@ local local_opt = {
                 special = {
                     --[[ ["require"] = "require", ]]
                 },
+            },
+            completion  = {
+                callSnippet = "Replace"
             },
         },
     },

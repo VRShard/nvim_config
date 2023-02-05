@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-saga.init_lsp_saga({
+saga.setup({
     -- Options with default value
     -- "single" | "double" | "rounded" | "bold" | "plus"
     border_style = "rounded",

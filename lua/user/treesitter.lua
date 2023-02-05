@@ -24,6 +24,7 @@ configs.setup {
 }
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 9
 local remember_fold_id = vim.api.nvim_create_augroup("remember_fold", {
     clear = true
 })
@@ -31,7 +32,7 @@ vim.api.nvim_create_autocmd("BufWrite", {
     group = remember_fold_id,
     pattern = "?*",
     callback = function()
-        if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
+        if vim.bo.filetype == "markdown" or vim.bo.filetype == "NvimTree" or vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
             -- print("not used here")
             -- return
         else
@@ -44,7 +45,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     group = remember_fold_id,
     pattern = "?*",
     callback = function()
-        if vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
+        if vim.bo.filetype == "markdown" or vim.bo.filetype == "TelescopePrompt" or vim.bo.filetype == "TelescopeResults" then
             -- print("not used here")
             -- return
         else
