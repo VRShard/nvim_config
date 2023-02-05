@@ -1,11 +1,11 @@
-local status_ok, impatient = pcall(require, "impatient")
-if not status_ok then
-    return
-end
-
-impatient.enable_profile()
+--local status_ok, impatient = pcall(require, "impatient")
+--if not status_ok then
+--    return
+--end
+--
+--impatient.enable_profile()
 require("user.option")
-require("user.packer")
+require("user.package_loader")
 require("user.telescope")
 require("user.treesitter")
 require("user.cmp")

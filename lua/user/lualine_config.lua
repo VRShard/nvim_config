@@ -47,7 +47,16 @@ lualine_config.setup {
                 end, --fmt=truc(120, 20, 60)
             }
         },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {
+            {
+                require("lazy.status").updates,
+                cond = require("lazy.status").has_updates,
+                color = { fg = "#ff9e64" },
+            },
+            'encoding',
+            'fileformat',
+            'filetype'
+        },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     },
