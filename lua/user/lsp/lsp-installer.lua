@@ -34,13 +34,19 @@ lspconfig.taplo.setup(opts)
 
 lspconfig.wgsl_analyzer.setup(opts)
 
-lspconfig.clangd.setup(opts)
+lspconfig.clangd.setup(vim.tbl_deep_extend(
+    "force",
+    {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }
+    },
+    opts
+))
 
 lspconfig.omnisharp.setup(vim.tbl_deep_extend(
     "force",
     {
-        use_mono = true;
-        cmd = { "dotnet", user_home .. "/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
+        use_mono = true,
+        cmd = { user_home .. "/.local/share/nvim/mason/packages/omnisharp-mono/run" },
         ["csharp"] = {
             inlayHints = {
                 parameters = {

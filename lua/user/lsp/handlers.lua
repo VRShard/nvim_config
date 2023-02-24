@@ -101,6 +101,7 @@ M.on_attach = function(client, bufnr)
                 autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.codelens.refresh()
               augroup END
             ]]
+        --[[ client.server_capabilities.semanticTokensProvider = nil ]]
         -- local cb = vim.lsp.handlers["$/progress"]
         -- vim.lsp.handlers["$/progress"] = function(...)
         --     cb(...)
