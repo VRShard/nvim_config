@@ -33,6 +33,6 @@ local local_opt = {
 local M = {}
 M.setup = function(lspconfig, opts)
     local_opt = vim.tbl_deep_extend("force", local_opt, opts)
-    lspconfig.sumneko_lua.setup(local_opt)
+    lspconfig.lua_ls.setup(local_opt)
 end
 return M
