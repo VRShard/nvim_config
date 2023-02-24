@@ -37,12 +37,12 @@ end
 nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = false,
-    ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-    },
+    -- open_on_setup = false,
+    -- ignore_ft_on_setup = {
+    --     "startify",
+    --     "dashboard",
+    --     "alpha",
+    -- },
     renderer = {
         add_trailing = true,
         group_empty = false,
