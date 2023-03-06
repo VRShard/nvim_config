@@ -303,9 +303,9 @@ local plugins_map = {
     {
         "f-person/auto-dark-mode.nvim"
     },
-    {
-        "dstein64/vim-startuptime"
-    }
+    --[[ { ]]
+    --[[     "dstein64/vim-startuptime" ]]
+    --[[ } ]]
 }
 package_manager.setup(plugins_map, {
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
