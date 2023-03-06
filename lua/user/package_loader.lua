@@ -46,7 +46,8 @@ local plugins_map = {
     -- {
     --     'lewis6991/impatient.nvim'
     -- },
-    { "rcarriga/nvim-notify",
+    {
+        "rcarriga/nvim-notify",
         config = function()
             vim.notify = require("notify")
         end
@@ -66,7 +67,11 @@ local plugins_map = {
     {
         "numToStr/Comment.nvim"
     },
-    { 'akinsho/bufferline.nvim', branch = "main", dependencies = 'nvim-tree/nvim-web-devicons' },
+    {
+        'akinsho/bufferline.nvim',
+        branch = "main",
+        dependencies = 'nvim-tree/nvim-web-devicons'
+    },
     {
         "moll/vim-bbye"
     },
@@ -79,7 +84,8 @@ local plugins_map = {
     {
         'antoinemadec/FixCursorHold.nvim'
     },
-    { 'rmagatti/auto-session',
+    {
+        'rmagatti/auto-session',
         lazy = false
     },
     {
@@ -89,7 +95,8 @@ local plugins_map = {
             require('session-lens').setup({})
         end
     },
-    { 'nvim-telescope/telescope.nvim',
+    {
+        'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
@@ -116,7 +123,8 @@ local plugins_map = {
     },
 
     -- use "ggandor/lightspeed.nvim"
-    { "ggandor/leap.nvim",
+    {
+        "ggandor/leap.nvim",
         config = function() require("leap").set_default_keymaps() end
     },
 
@@ -173,30 +181,33 @@ local plugins_map = {
     },
 
     --use { "nvim-telescope/telescope-file-browser.nvim" }
-    { 'nvim-tree/nvim-web-devicons', config = function()
-        local _devicons = require 'nvim-web-devicons'
-        if _devicons.has_loaded() then
-            _devicons.set_icon {
-                scm = {
-                    icon = "ƛ",
-                    color = "#428850",
-                    cterm_color = "65",
-                    name = "Scheme"
-                }
-            }
-        else
-            _devicons.setup {
-                override = {
+    {
+        'nvim-tree/nvim-web-devicons',
+        config = function()
+            local _devicons = require 'nvim-web-devicons'
+            if _devicons.has_loaded() then
+                _devicons.set_icon {
                     scm = {
                         icon = "ƛ",
                         color = "#428850",
                         cterm_color = "65",
                         name = "Scheme"
                     }
-                };
-            }
+                }
+            else
+                _devicons.setup {
+                    override = {
+                        scm = {
+                            icon = "ƛ",
+                            color = "#428850",
+                            cterm_color = "65",
+                            name = "Scheme"
+                        }
+                    },
+                }
+            end
         end
-    end },
+    },
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" }, -- Tree-sitter
     --[[ use { 'nvim-treesitter/nvim-treesitter-context' } -- Tree-sitter ]]
     {
@@ -213,17 +224,20 @@ local plugins_map = {
         "lukas-reineke/indent-blankline.nvim"
     },
 
-    { 'nvim-lualine/lualine.nvim',
+    {
+        'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
     {
         "nvim-lua/lsp-status.nvim"
     },
     --use "arkav/lualine-lsp-progress"
-    { "glepnir/lspsaga.nvim",
+    {
+        "glepnir/lspsaga.nvim",
         branch = "main",
     },
-    { "folke/trouble.nvim",
+    {
+        "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("trouble").setup {}
@@ -236,20 +250,24 @@ local plugins_map = {
         },
     },
 
-    { "akinsho/toggleterm.nvim", branch = "main" },
+    {
+        "akinsho/toggleterm.nvim",
+        branch = "main"
+    },
     {
         "folke/which-key.nvim"
     },
 
-    { 'abecodes/tabout.nvim',
+    {
+        'abecodes/tabout.nvim',
         config = function()
             require('tabout').setup {
-                tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+                tabkey = '<Tab>',             -- key to trigger tabout, set to an empty string to disable
                 backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
-                act_as_tab = true, -- shift content if tab out is not possible
-                act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-                enable_backwards = true, -- well ...
-                completion = true, -- if the tabkey is used in a completion pum
+                act_as_tab = true,            -- shift content if tab out is not possible
+                act_as_shift_tab = false,     -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+                enable_backwards = true,      -- well ...
+                completion = true,            -- if the tabkey is used in a completion pum
                 tabouts = {
                     { open = "'", close = "'" },
                     { open = '"', close = '"' },
@@ -264,14 +282,16 @@ local plugins_map = {
             }
         end,
         wants = { 'nvim-treesitter' }, -- or require if not used so far
-        after = { 'cmp-nvim-lua' } -- if a completion plugin is using tabs load it before
+        after = { 'cmp-nvim-lua' }     -- if a completion plugin is using tabs load it before
     },
 
-    { "luukvbaal/stabilize.nvim",
+    {
+        "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
     },
 
-    { 'lewis6991/gitsigns.nvim',
+    {
+        'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup()
         end
@@ -290,7 +310,7 @@ local plugins_map = {
 package_manager.setup(plugins_map, {
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
     defaults = {
-        lazy = false, -- should plugins be lazy-loaded?
+        lazy = false,                         -- should plugins be lazy-loaded?
         version = nil,
         -- version = "*", -- enable this to try installing the latest stable versions of plugins
     },
@@ -302,7 +322,7 @@ package_manager.setup(plugins_map, {
         -- defaults for the `Lazy log` command
         -- log = { "-10" }, -- show the last 10 commits
         log = { "--since=3 days ago" }, -- show commits from the last 3 days
-        timeout = 120, -- kill processes that take more than 2 minutes
+        timeout = 120,                  -- kill processes that take more than 2 minutes
         url_format = "https://github.com/%s.git",
         -- lazy.nvim requires git >=2.19.0. If you really want to use lazy with an older version,
         -- then set the below to false. This is should work, but is NOT supported and will
@@ -313,7 +333,7 @@ package_manager.setup(plugins_map, {
         -- directory where you store your local plugin projects
         path = "~/projects",
         ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-        patterns = {}, -- For example {"folke"}
+        patterns = {},    -- For example {"folke"}
         fallback = false, -- Fallback to git when local plugin doesn't exist
     },
     install = {
@@ -360,14 +380,13 @@ package_manager.setup(plugins_map, {
             -- To disable one of the defaults, set it to false
 
             -- open lazygit log
-            ["<localleader>l"] = function(plugin)
+                ["<localleader>l"] = function(plugin)
                 require("lazy.util").float_term({ "lazygit", "log" }, {
                     cwd = plugin.dir,
                 })
             end,
-
             -- open a terminal for the plugin dir
-            ["<localleader>t"] = function(plugin)
+                ["<localleader>t"] = function(plugin)
                 require("lazy.util").float_term(nil, {
                     cwd = plugin.dir,
                 })
@@ -387,7 +406,7 @@ package_manager.setup(plugins_map, {
         -- automatically check for plugin updates
         enabled = true,
         concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-        notify = true, -- get a notification when new updates are found
+        notify = true,    -- get a notification when new updates are found
         frequency = 3600, -- check for updates every hour
     },
     change_detection = {
@@ -407,11 +426,11 @@ package_manager.setup(plugins_map, {
             disable_events = { "UIEnter", "BufReadPre" },
             ttl = 3600 * 24 * 5, -- keep unused modules for up to 5 days
         },
-        reset_packpath = true, -- reset the package path to improve startup time
+        reset_packpath = true,   -- reset the package path to improve startup time
         rtp = {
-            reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+            reset = true,        -- reset the runtime path to $VIMRUNTIME and your config directory
             ---@type string[]
-            paths = {}, -- add any custom paths here that you want to includes in the rtp
+            paths = {},          -- add any custom paths here that you want to includes in the rtp
             ---@type string[] list any plugins you want to disable here
             disabled_plugins = {
                 -- "gzip",
