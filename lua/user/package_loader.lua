@@ -244,7 +244,9 @@ local plugins_map = {
         end
     },
 
-    { 'nvim-tree/nvim-tree.lua',
+    {
+        'nvim-tree/nvim-tree.lua',
+        commit = '9c97e64',
         dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icon
         },
