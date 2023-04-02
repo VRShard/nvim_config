@@ -85,7 +85,6 @@ local local_opt = {
             --     yieldPoints = true
             -- }
         },
-
     }
 }
 -- vim.env.PATH = "$HOME/.local/share/nvim/lsp_servers/rust:" .. vim.env.PATH

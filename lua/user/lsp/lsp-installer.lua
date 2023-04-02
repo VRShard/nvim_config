@@ -34,6 +34,8 @@ lspconfig.taplo.setup(opts)
 
 lspconfig.wgsl_analyzer.setup(opts)
 
+lspconfig.zls.setup(opts)
+
 lspconfig.clangd.setup(vim.tbl_deep_extend(
     "force",
     {

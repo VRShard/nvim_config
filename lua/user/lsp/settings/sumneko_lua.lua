@@ -5,7 +5,6 @@ require("neodev").setup({
 local local_opt = {
     cmd = { "lua-language-server", "--preview" },
     settings = {
-
         Lua = {
             diagnostics = {
                 globals = { "vim" },
@@ -15,6 +14,7 @@ local local_opt = {
                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                     [vim.fn.stdpath("config") .. "/lua"] = true,
                 },
+                checkThirdParty = false,
             },
             hint        = {
                 enable = true,
