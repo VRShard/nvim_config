@@ -1,7 +1,7 @@
 local options = {
     backup = false, -- creates a backup file
     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-    cmdheight = 2, -- more space in the neovim command line for displaying messages
+    cmdheight = 0, -- more space in the neovim command line for displaying messages
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 2, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
@@ -25,6 +25,7 @@ local options = {
     shiftwidth = 4, -- the number of spaces inserted for each indentation
     tabstop = 4, -- insert 2 spaces for a tab
     cursorline = true, -- highlight the current line
+    --[[ cursorcolumn = true, -- highlight the current column ]]
     number = true, -- set numbered lines
     relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
@@ -33,8 +34,8 @@ local options = {
     scrolloff = 8, -- is one of my fav
     sidescrolloff = 8,
     linebreak = true,
-    guifont = "Operator Mono SSm Lig Book:h10", -- the font used in graphical neovim applications
-    --[[ guifont = "IBM Plex Mono Text,Symbols Nerd Font Mono:h12", ]]
+    --[[ guifont = "Operator Mono SSm Lig Book:h14", -- the font used in graphical neovim applications ]]
+    guifont = "IBM Plex Mono Text,Operator Mono SSm Lig Book,Symbols Nerd Font:h14",
 }
 
 --vim.opt.shortmess:append "c"
