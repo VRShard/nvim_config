@@ -211,7 +211,8 @@ local plugins_map = {
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" }, -- Tree-sitter
     --[[ use { 'nvim-treesitter/nvim-treesitter-context' } -- Tree-sitter ]]
     {
-        "p00f/nvim-ts-rainbow"
+        -- "HiPhish/nvim-ts-rainbow2"
+        "HiPhish/rainbow-delimiters.nvim"
     },
     {
         'nvim-treesitter/playground'
