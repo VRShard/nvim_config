@@ -84,8 +84,8 @@ nvim_tree.setup {
         add_trailing = true,
         group_empty = false,
         highlight_git = false,
-        highlight_opened_files = "icons", --"none",
-        root_folder_modifier = ":~",
+        highlight_opened_files = "icon", --"none",
+        root_folder_label = ":~:s?$?/..?",
         indent_markers = {
             enable = true,
             inline_arrows = true,
@@ -169,7 +169,7 @@ nvim_tree.setup {
     view = {
         width = 40,
         --[[ height = 30, ]]
-        hide_root_folder = false,
+        -- hide_root_folder = false,
         side = "left",
         -- auto_resize = true,
         --mappings = {
