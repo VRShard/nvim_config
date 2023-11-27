@@ -231,12 +231,15 @@ local plugins_map = {
         'nvim-treesitter/playground'
     },
     {
-        "JoosepAlviste/nvim-ts-context-commentstring"
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        opts = {
+            enable_autocmd = false,
+        }
     },
 
-    {
-        "lukas-reineke/indent-blankline.nvim"
-    },
+    -- {
+    --     "lukas-reineke/indent-blankline.nvim"
+    -- },
 
     {
         'nvim-lualine/lualine.nvim',
