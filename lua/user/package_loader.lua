@@ -18,12 +18,12 @@ end
 vim.opt.rtp:prepend(install_path)
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost package_loader.lua Lazy sync
-    augroup end
-]]
+-- vim.cmd [[
+--     augroup packer_user_config
+--         autocmd!
+--         autocmd BufWritePost package_loader.lua Lazy sync
+--     augroup end
+-- ]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, package_manager = pcall(require, "lazy")
@@ -101,18 +101,18 @@ local plugins_map = {
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    {
-        "narutoxy/silicon.lua",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require('silicon').setup({
-                font = "IBM Plex Mono",
-                debug = true,
-                theme = "material",
-                lineNumber = false,
-            })
-        end
-    },
+    --[[ { ]]
+    --[[     "narutoxy/silicon.lua", ]]
+    --[[     dependencies = { "nvim-lua/plenary.nvim" }, ]]
+    --[[     config = function() ]]
+    --[[         require('silicon').setup({ ]]
+    --[[             font = "IBM Plex Mono", ]]
+    --[[             debug = true, ]]
+    --[[             theme = "material", ]]
+    --[[             lineNumber = false, ]]
+    --[[         }) ]]
+    --[[     end ]]
+    --[[ }, ]]
 
     { "sainnhe/everforest" },
     {
@@ -133,10 +133,23 @@ local plugins_map = {
         "neovim/nvim-lspconfig" -- enable LSP
     },
     --use 'nvim-lua/lsp_extensions.nvim'
-    { 'simrat39/rust-tools.nvim', branch = "master" },
+    { 'simrat39/rust-tools.nvim',        branch = "master" },
     --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
     {
-        "williamboman/mason.nvim" -- simple to use language server installer
+        "williamboman/mason.nvim", -- simple to use language server installer
+        config = function ()
+            require("mason").setup({
+                ui = {
+                    border = "single",
+                }
+            })
+        end
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        config = function()
+            require("lsp_signature").setup()
+        end
     },
     -- use "jose-elias-alvarez/null-ls.nvim"
     --[[ use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", ]]
@@ -235,7 +248,7 @@ local plugins_map = {
     --use "arkav/lualine-lsp-progress"
     {
         "glepnir/lspsaga.nvim",
-        branch = "main",
+        --[[ branch = "ref", ]]
     },
     {
         "folke/trouble.nvim",
@@ -344,7 +357,11 @@ local plugins_map = {
     --[[     "dstein64/vim-startuptime" ]]
     --[[ } ]]
 }
-package_manager.setup(plugins_map, {
+package_manager.setup({
+    spec = {
+        plugins_map,
+        { import = "plugins" },
+    },
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
     defaults = {
         lazy = false,                         -- should plugins be lazy-loaded?
@@ -352,7 +369,6 @@ package_manager.setup(plugins_map, {
         -- version = "*", -- enable this to try installing the latest stable versions of plugins
     },
     -- leave nil when passing the spec as the first argument to setup()
-    spec = nil, ---@type LazySpec
     lockfile = vim.fn.stdpath("config") .. "/lazy-lock.json", -- lockfile generated after running update.
     concurrency = nil, ---@type number limit the maximum amount of concurrent tasks
     git = {
@@ -366,13 +382,13 @@ package_manager.setup(plugins_map, {
         -- increase downloads a lot.
         filter = true,
     },
-    dev = {
-        -- directory where you store your local plugin projects
-        path = "~/projects",
-        ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
-        patterns = {},    -- For example {"folke"}
-        fallback = false, -- Fallback to git when local plugin doesn't exist
-    },
+    -- dev = {
+    --     -- directory where you store your local plugin projects
+    --     path = "~/projects",
+    --     ---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
+    --     patterns = {},    -- For example {"folke"}
+    --     fallback = false, -- Fallback to git when local plugin doesn't exist
+    -- },
     install = {
         -- install missing plugins on startup. This doesn't increase startup time.
         missing = true,
@@ -417,13 +433,13 @@ package_manager.setup(plugins_map, {
             -- To disable one of the defaults, set it to false
 
             -- open lazygit log
-                ["<localleader>l"] = function(plugin)
+            ["<localleader>l"] = function(plugin)
                 require("lazy.util").float_term({ "lazygit", "log" }, {
                     cwd = plugin.dir,
                 })
             end,
             -- open a terminal for the plugin dir
-                ["<localleader>t"] = function(plugin)
+            ["<localleader>t"] = function(plugin)
                 require("lazy.util").float_term(nil, {
                     cwd = plugin.dir,
                 })
@@ -494,6 +510,6 @@ package_manager.setup(plugins_map, {
 })
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
-if LAZY_BOOTSTRAP then
-    require("user.packer").sync()
-end
+-- if LAZY_BOOTSTRAP then
+--     require("user.packer").sync()
+-- end
