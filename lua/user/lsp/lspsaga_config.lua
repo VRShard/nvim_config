@@ -30,7 +30,7 @@ saga.setup({
     -- if true can press number to execute the codeaction in codeaction window
     code_action_num_shortcut = true,
     -- same as nvim-lightbulb but async
-    code_action_lightbulb = {
+    lightbulb = {
         enable = true,
         enable_in_insert = true,
         cache_code_action = true,
@@ -38,6 +38,9 @@ saga.setup({
         update_time = 150,
         sign_priority = 20,
         virtual_text = false,
+    },
+    finder = {
+        default = "def+ref+imp"
     },
     -- finder icons
     finder_icons = {
@@ -129,8 +132,8 @@ local keymap = vim.keymap.set --[[ vim.api.nvim_buf_set_keymap ]]
 -- if there is no implement it will hide
 -- when you use action in finder like open vsplit then you can
 -- use <C-t> to jump back
-keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-keymap("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
+keymap("n", "gd", "<cmd>Lspsaga finder<CR>", opts)
 
 -- Code action
 --[[ keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) ]]

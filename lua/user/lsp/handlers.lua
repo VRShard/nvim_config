@@ -5,9 +5,9 @@ local M = {}
 M.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignWarn",  text = "" },
+        { name = "DiagnosticSignHint",  text = "" },
+        { name = "DiagnosticSignInfo",  text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -48,16 +48,13 @@ end
 local function lsp_highlight_document(client)
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_exec(
-            [[
+        vim.cmd([[
               augroup lsp_document_highlight
                 autocmd! * <buffer>
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
               augroup END
-            ]],
-            false
-        )
+            ]])
     end
 end
 
@@ -91,17 +88,20 @@ M.on_attach = function(client, bufnr)
     --  client.resolved_capabilities.document_formatting = false
     --end
     lsp_status.on_attach(client)
+    vim.lsp.inlay_hint.enable(bufnr, false)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+        { noremap = true, silent = true })
     if client.name == "rust_analyzer" then
         vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
-        vim.cmd [[
+        vim.cmd([[
               augroup change_inlayHinthand
                 autocmd! * <buffer>
-                " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").set_inlay_hints()
-                " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").enable()
                 autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.codelens.refresh()
               augroup END
-            ]]
-        --[[ client.server_capabilities.semanticTokensProvider = nil ]]
+            ]])
+        --[[ " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").set_inlay_hints() ]]
+        --[[ " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").enable() ]]
+        client.server_capabilities.semanticTokensProvider = nil
         -- local cb = vim.lsp.handlers["$/progress"]
         -- vim.lsp.handlers["$/progress"] = function(...)
         --     cb(...)
@@ -134,7 +134,7 @@ M.on_attach = function(client, bufnr)
                 "label", "xml", "regexp" }
         }
     end
-    --[[ lsp_keymaps(bufnr) ]]
+    -- lsp_keymaps(bufnr)
     lsp_highlight_document(client)
 end
 

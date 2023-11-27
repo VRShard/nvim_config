@@ -100,7 +100,7 @@ M.setup = function(_, opts)
         tools = {
             -- autoSetHints = true,
             inlay_hints = {
-                auto = true,
+                auto = false,
                 -- wheter to show parameter hints with the inlay hints or not
                 show_parameter_hints = true,
                 -- prefix for parameter hints
