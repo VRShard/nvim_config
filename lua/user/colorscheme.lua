@@ -8,7 +8,7 @@ require('material').setup({
         sign_column = true, -- Enable contrast background the sign column
         cursor_line = false, -- Enable darker background for the cursor line
         non_current_windows = true, -- Enable darker background for non-current windows
-        --popup_menu = true, -- Enable lighter background for the popup menu
+        --[[ popup_menu = false, -- Enable lighter background for the popup menu ]]
     },
 
     styles = {
@@ -42,7 +42,7 @@ require('material').setup({
 
     contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
         "terminal", -- Darker terminal background
-        "packer", -- Darker packer background
+        "lazy", -- Darker packer background
         "qf", -- Darker qf list background
         "mason",
     },
@@ -82,6 +82,9 @@ require('material').setup({
         },
         ["NotifyINFOIcon"] = {
             fg = "#b2d582",
+        },
+        ["LspInlayHint"] = {
+            fg = "#d3d3d3",
         },
     } -- Overwrite highlights with your own
 })

@@ -121,6 +121,9 @@ local plugins_map = {
     {
         'Luxed/ayu-vim'
     },
+    {
+        'talha-akram/noctis.nvim'
+    },
 
     -- use "ggandor/lightspeed.nvim"
     {
