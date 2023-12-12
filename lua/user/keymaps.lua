@@ -1,10 +1,3 @@
--- Autocommand that reloads neovim whenever you save the keymaps.lua file
---vim.cmd [[
---  augroup keymap_user_config
---    autocmd!
---    autocmd BufWritePost keymaps.lua source <afile>
---  augroup end
---]]
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }

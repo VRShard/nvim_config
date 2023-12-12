@@ -1,7 +1,7 @@
 local lsp_status = require('lsp-status')
 local M = {}
 
--- TODO: backfill this to template
+-- suTODO: backfill this to template
 M.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },

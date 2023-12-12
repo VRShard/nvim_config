@@ -1,6 +1,5 @@
 local fn = vim.fn
 
--- Automatically install packer
 local install_path = fn.stdpath "data" .. "/lazy/lazy.nvim"
 -- if fn.empty(fn.glob(install_path)) > 0 then
 if not vim.loop.fs_stat(install_path) then
@@ -13,17 +12,8 @@ if not vim.loop.fs_stat(install_path) then
         install_path,
     }
     print "Installing Lazy close and reopen Neovim..."
-    --[[ vim.cmd "packadd packer.nvim" ]]
 end
 vim.opt.rtp:prepend(install_path)
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---     augroup packer_user_config
---         autocmd!
---         autocmd BufWritePost package_loader.lua Lazy sync
---     augroup end
--- ]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, package_manager = pcall(require, "lazy")
@@ -33,72 +23,68 @@ end
 
 -- Install your plugins here
 local plugins_map = {
-    -- My plugins here
     {
         "folke/lazy.nvim" -- Have packer manage itself
-    },
+    }, -- confirmed
     {
         "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-    },
+    },  -- confirmed
     {
         "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-    },
-    -- {
-    --     'lewis6991/impatient.nvim'
-    -- },
+    },  -- confirmed
     {
         "rcarriga/nvim-notify",
         config = function()
             vim.notify = require("notify")
         end
-    },
+    },  -- confirmed
     {
         'simnalamburt/vim-mundo'
-    },
+    },  -- confirmed
     {
         "windwp/nvim-autopairs"
-    },
+    }, -- confirmed
     {
         "tpope/vim-surround"
-    },
+    }, -- confirmed
     {
         "tpope/vim-repeat"
-    },
+    }, -- confirmed
     {
         "numToStr/Comment.nvim"
-    },
+    }, -- confirmed
     {
         'akinsho/bufferline.nvim',
         branch = "main",
         dependencies = 'nvim-tree/nvim-web-devicons'
-    },
+    },  --confirmed
     {
         "moll/vim-bbye"
-    },
+    },  -- confirmed
     {
         "mfussenegger/nvim-dap"
-    },
+    },  -- TODO: debug
     {
         "rcarriga/nvim-dap-ui"
-    },
+    },  -- TODO: debug
     {
         'antoinemadec/FixCursorHold.nvim'
-    },
+    },  -- TODO: obsolete
     {
         'rmagatti/auto-session',
         lazy = false
-    },
+    },  -- confirmed
     {
         'rmagatti/session-lens',
         dependencies = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
         config = function()
             require('session-lens').setup({})
         end
-    },
+    },  -- TODO: TBD
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' } }
-    },
+    },  -- confirmed
     { 'nvim-telescope/telescope-ui-select.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     --[[ { ]]
@@ -114,29 +100,26 @@ local plugins_map = {
     --[[     end ]]
     --[[ }, ]]
 
-    { "sainnhe/everforest" },
-    {
-        'marko-cerovac/material.nvim'
-    },
+    { "sainnhe/everforest" },   -- confirmed
     {
         'Luxed/ayu-vim'
-    },
+    },  -- confirmed
     {
         'talha-akram/noctis.nvim'
-    },
+    },  -- confirmed
 
     -- use "ggandor/lightspeed.nvim"
     {
         "ggandor/leap.nvim",
         config = function() require("leap").set_default_keymaps() end
-    },
+    },  -- confirmed
 
     -- LSP
     {
         "neovim/nvim-lspconfig" -- enable LSP
-    },
+    },  -- confirmed
     --use 'nvim-lua/lsp_extensions.nvim'
-    { 'simrat39/rust-tools.nvim',        branch = "master" },
+    { 'simrat39/rust-tools.nvim',        branch = "master" },   -- TODO: should drop
     --[[ use "williamboman/nvim-lsp-installer" -- simple to use language server installer ]]
     {
         "williamboman/mason.nvim", -- simple to use language server installer
@@ -147,13 +130,13 @@ local plugins_map = {
                 }
             })
         end
-    },
+    },  -- confirmed
     {
         "ray-x/lsp_signature.nvim",
         config = function()
             require("lsp_signature").setup()
         end
-    },
+    },  -- confirmed
     -- use "jose-elias-alvarez/null-ls.nvim"
     --[[ use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim", ]]
     --[[     config = function() ]]
@@ -163,38 +146,38 @@ local plugins_map = {
     -- cmp
     {
         'hrsh7th/cmp-nvim-lsp'
-    },
+    },  -- confirmed
     {
         'hrsh7th/cmp-buffer'
-    },
+    },  -- confirmed
     {
         'hrsh7th/cmp-path'
-    },
+    },  -- confirmed
     {
         'hrsh7th/cmp-cmdline'
-    },
+    },  -- confirmed
     {
         'hrsh7th/nvim-cmp'
-    },
+    },  -- confirmed
     {
         "folke/neodev.nvim"
-    },
+    },  -- confirmed
 
     -- snip
     --use 'hrsh7th/cmp-vsnip'
     --use 'hrsh7th/vim-vsnip'
     {
         "saadparwaiz1/cmp_luasnip" -- snippet completions
-    },
+    },  -- confirmed
     {
         "L3MON4D3/LuaSnip" --snippet engine
-    },
+    },  -- confirmed
     {
         "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-    },
+    },  -- confirmed
     {
         'hrsh7th/cmp-nvim-lua'
-    },
+    },  -- confirmed
 
     --use { "nvim-telescope/telescope-file-browser.nvim" }
     {
@@ -223,22 +206,22 @@ local plugins_map = {
                 }
             end
         end
-    },
+    }, -- confirmed
     { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate" }, -- Tree-sitter
     --[[ use { 'nvim-treesitter/nvim-treesitter-context' } -- Tree-sitter ]]
     {
         -- "HiPhish/nvim-ts-rainbow2"
         "HiPhish/rainbow-delimiters.nvim"
-    },
+    },  -- confirmed
     {
         'nvim-treesitter/playground'
-    },
+    },  -- confirmed
     {
         "JoosepAlviste/nvim-ts-context-commentstring",
         opts = {
             enable_autocmd = false,
         }
-    },
+    },  -- confirmed
 
     -- {
     --     "lukas-reineke/indent-blankline.nvim"
@@ -247,22 +230,22 @@ local plugins_map = {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
-    },
+    },  -- confirmed
     {
         "nvim-lua/lsp-status.nvim"
-    },
+    },  -- confirmed
     --use "arkav/lualine-lsp-progress"
     {
         "glepnir/lspsaga.nvim",
         --[[ branch = "ref", ]]
-    },
+    },  -- TODO: lsp
     {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("trouble").setup {}
         end
-    },
+    },  -- TODO: TBD
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -271,22 +254,22 @@ local plugins_map = {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         }
-    },
+    },  -- confirmed
 
     {
         'nvim-tree/nvim-tree.lua',
         dependencies = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icon
         },
-    },
+    },  -- confirmed
 
     {
         "akinsho/toggleterm.nvim",
         branch = "main"
-    },
+    },  -- confirmed
     {
         "folke/which-key.nvim"
-    },
+    },  -- confirmed
 
     {
         'abecodes/tabout.nvim',
@@ -313,12 +296,12 @@ local plugins_map = {
         end,
         wants = { 'nvim-treesitter' }, -- or require if not used so far
         after = { 'cmp-nvim-lua' }     -- if a completion plugin is using tabs load it before
-    },
+    },  -- TODO: TBD
 
     {
         "luukvbaal/stabilize.nvim",
         config = function() require("stabilize").setup() end
-    },
+    },  -- TODO: perhaps not required anymore
 
     {
         'lewis6991/gitsigns.nvim',
@@ -326,7 +309,7 @@ local plugins_map = {
             require('gitsigns').setup()
         end,
         lazy = false,
-    },
+    },  -- confirmed
     {
         'sindrets/diffview.nvim',
         config = function ()
@@ -351,21 +334,15 @@ local plugins_map = {
                 end, { nargs = "*" }
             )
         end
-    },
-    --[[ use { 'simrat39/symbols-outline.nvim', ]]
-    --[[     config = function() require("symbols-outline").setup() end ]]
-    --[[ } ]]
+    },  -- confirmed
 
     {
         "f-person/auto-dark-mode.nvim"
-    },
-    --[[ { ]]
-    --[[     "dstein64/vim-startuptime" ]]
-    --[[ } ]]
+    },  -- TODO: MacOS only
 }
 package_manager.setup({
     spec = {
-        plugins_map,
+        plugins_map, -- should procedually be obsolete
         { import = "plugins" },
     },
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
@@ -399,7 +376,7 @@ package_manager.setup({
         -- install missing plugins on startup. This doesn't increase startup time.
         missing = true,
         -- try to load one of these colorschemes when starting an installation during startup
-        colorscheme = { "material" },
+        colorscheme = { "gruvbox-material" },
     },
     ui = {
         -- a number <1 is a percentage., >1 is a fixed size
@@ -434,23 +411,7 @@ package_manager.setup({
         -- If you want to use a specific browser, you can define it here
         browser = nil, ---@type string?
         throttle = 20, -- how frequently should the ui process render events
-        custom_keys = {
-            -- you can define custom key maps here.
-            -- To disable one of the defaults, set it to false
-
-            -- open lazygit log
-            ["<localleader>l"] = function(plugin)
-                require("lazy.util").float_term({ "lazygit", "log" }, {
-                    cwd = plugin.dir,
-                })
-            end,
-            -- open a terminal for the plugin dir
-            ["<localleader>t"] = function(plugin)
-                require("lazy.util").float_term(nil, {
-                    cwd = plugin.dir,
-                })
-            end,
-        },
+        custom_keys = {},
     },
     diff = {
         -- diff command <d> can be one of:
@@ -514,8 +475,3 @@ package_manager.setup({
     },
     state = vim.fn.stdpath("state") .. "/lazy/state.json", -- state info for checker and other things
 })
--- Automatically set up your configuration after cloning packer.nvim
--- Put this at the end after all plugins
--- if LAZY_BOOTSTRAP then
---     require("user.packer").sync()
--- end
