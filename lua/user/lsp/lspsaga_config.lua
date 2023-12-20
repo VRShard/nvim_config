@@ -135,12 +135,6 @@ local keymap = vim.keymap.set --[[ vim.api.nvim_buf_set_keymap ]]
 keymap("n", "gh", "<cmd>Lspsaga finder<CR>", opts)
 keymap("n", "gd", "<cmd>Lspsaga finder<CR>", opts)
 
--- Code action
---[[ keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) ]]
-
--- Rename
---[[ keymap("n", "gr", "<cmd>Lspsaga rename<CR>", opts) ]]
-
 -- Peek Definition
 -- you can edit the definition file in this flaotwindow
 -- also support open/vsplit/etc operation check definition_action_keys
@@ -165,16 +159,5 @@ keymap("n", "]E", function()
     require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, opts)
 
--- Outline
--- keymap("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
-
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-
---[[ -- Float terminal ]]
---[[ keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", opts) ]]
---[[ -- if you want pass somc cli command into terminal you can do like this ]]
---[[ -- open lazygit in lspsaga float terminal ]]
---[[ keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm gitui<CR>", opts) ]]
---[[ -- close floaterm ]]
---[[ keymap("t", "<A-d>", "<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>", opts) ]]

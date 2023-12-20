@@ -2,6 +2,7 @@ return {
     {
         'marko-cerovac/material.nvim',
         config = true,
+        enabled = false,
         opts = {
             contrast = {
                 sidebars = true,            -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
@@ -93,9 +94,10 @@ return {
     },
     {
         "sainnhe/gruvbox-material",
+        event = "VeryLazy",
         config = function()
             vim.g.gruvbox_material_background = 'medium'
-            vim.g.gruvbox_material_foreground = 'material'
+            vim.g.gruvbox_material_foreground = 'original'
             vim.g.gruvbox_material_disable_italic_comment = 0
             vim.g.gruvbox_material_enable_bold = 0
             vim.g.gruvbox_material_enable_italic = 1
@@ -107,6 +109,8 @@ return {
             vim.g.gruvbox_material_diagnostic_virtual_text = 'grey'
             vim.g.gruvbox_material_current_word = 'bold'
             vim.g.gruvbox_material_better_performance = 1
+
+            -- should move to another place
             local color_theme = "gruvbox-material"
             local status_ok, _ = pcall(vim.cmd, "colorscheme " .. color_theme)
             if not status_ok then
@@ -121,6 +125,7 @@ return {
         "ellisonleao/gruvbox.nvim",
         priority = 1000,
         config = true,
+        enabled = false,
         opts = {
             terminal_colors = true, -- add neovim terminal colors
             undercurl = true,
@@ -158,5 +163,12 @@ return {
             dim_inactive = true,
             transparent_mode = true,
         }
+    },
+    { "sainnhe/everforest" },
+    {
+        'Luxed/ayu-vim'
+    },
+    {
+        'talha-akram/noctis.nvim'
     },
 }

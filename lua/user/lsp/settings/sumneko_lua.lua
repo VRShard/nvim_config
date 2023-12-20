@@ -3,7 +3,7 @@ require("neodev").setup({
 })
 
 local local_opt = {
-    cmd = { "lua-language-server", "--preview" },
+    -- cmd = { "lua-language-server", "--preview" },
     settings = {
         Lua = {
             diagnostics = {
@@ -11,6 +11,7 @@ local local_opt = {
             },
             workspace   = {
                 library = {
+                    vim.env.VIMRUNTIME,
                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                     [vim.fn.stdpath("config") .. "/lua"] = true,
                 },
@@ -23,6 +24,7 @@ local local_opt = {
                 special = {
                     --[[ ["require"] = "require", ]]
                 },
+                version = "LuaJIT",
             },
             completion  = {
                 callSnippet = "Replace"

@@ -55,3 +55,4 @@ vim.cmd [[set autoread | au CursorHold * checktime]]
 
 
 vim.cmd "au BufNewFile,BufRead *.wgsl set filetype=wgsl"
+vim.cmd "hi Normal guibg=None"

@@ -1,12 +1,8 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-    return
-end
-
+local bufferline = require("bufferline")
 bufferline.setup({
     options = {
         buffer_close_icon = '',
-        style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
+        style_preset = require("bufferline").style_preset.default, -- or bufferline.style_preset.minimal,
         themable = true,
         separator_style = "thick",
         enforce_regular_tabs = true,
@@ -19,12 +15,12 @@ bufferline.setup({
         },
         offsets = {
             {
-                filetype = "NvimTree",
+                filetype = "neo-tree",
                 text = "File Explorer",
                 text_align = "center",
                 separator = true,
             }
         },
     }
-});
+})
 vim.api.nvim_set_keymap("n", "gB", "<cmd>BufferLinePick<CR>", { noremap = true, silent = true })

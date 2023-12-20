@@ -1,8 +1,4 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-    return
-end
-configs.setup {
+require("nvim-treesitter.configs").setup({
     -- ensure_installed = "maintained",
     sync_install = false,
     ignore_install = { "vala" }, -- List of parsers to ignore installing
@@ -12,16 +8,11 @@ configs.setup {
         additional_vim_regex_highlighting = true,
     },
     indent = { enable = true, disable = { "yaml" } },
-    -- rainbow = {
-    --     enable = true,
-    --     extended_mode = true,
-    --     max_file_lines = nil
-    -- },
     context_commentstring = {
         enable = false,
         enable_autocmd = false,
     },
-}
+})
 vim.o.foldmethod = 'expr'
 vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 9
