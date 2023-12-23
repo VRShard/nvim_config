@@ -5,7 +5,7 @@ lualine_config.setup(
             icons_enabled = true,
             component_separators = { left = '', right = '' },
             section_separators = { left = '', right = '' },
-            disabled_filetypes = { "Outline", "toggleterm", "lspsagaoutline" },
+            disabled_filetypes = { "Outline", "toggleterm", "lspsagaoutline", statusline = { "dashboard", "alpha", "starter" } },
             always_divide_middle = true,
             globalstatus = true,
             theme = "gruvbox-material"

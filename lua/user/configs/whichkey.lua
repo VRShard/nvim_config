@@ -132,38 +132,6 @@ local mappings = {
         },
     },
 
-    l = {
-        name = "LSP",
-        a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
-        r = { "<cmd>Lspsaga rename<CR>", "Rename" },
-        --[[ h = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Finder" }, ]]
-        f = { "<cmd>lua vim.lsp.buf.format { async=true }<cr>", "Format" },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-        d = {
-            "<cmd>Telescope diagnostics bufnr=0<cr>",
-            "Document Diagnostics",
-        },
-        w = {
-            "<cmd>Telescope diagnostics<cr>",
-            "Workspace Diagnostics",
-        },
-        j = {
-            "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-            "Next Diagnostic",
-        },
-        k = {
-            "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-            "Prev Diagnostic",
-        },
-        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-        S = {
-            "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-            "Workspace Symbols",
-        },
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>Mason<cr>", "Installer Info" },
-    },
     s = {
         name = "Search",
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },

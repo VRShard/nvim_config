@@ -29,6 +29,9 @@ package_manager.setup({
     spec = {
         plugins_map, -- should procedually be obsolete
         { import = "plugins" },
+        { import = "plugins.lsp" },
+        { import = "plugins.lsp.langs" },
+        { import = "plugins.debug" },
     },
     root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed
     defaults = {

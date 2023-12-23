@@ -84,14 +84,12 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    --if client.name == "tsserver" then
-    --  client.resolved_capabilities.document_formatting = false
-    --end
     lsp_status.on_attach(client)
     vim.lsp.inlay_hint.enable(bufnr, false)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
-        { noremap = true, silent = true })
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+    --     { noremap = true, silent = true, desc = "Toggle inlay hint" })
     if client.name == "rust_analyzer" then
+    vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>", { noremap = true, silent = true, desc = "Toggle inlay hint", buffer = bufnr })
         vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
         vim.cmd([[
               augroup change_inlayHinthand
@@ -99,30 +97,7 @@ M.on_attach = function(client, bufnr)
                 autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.codelens.refresh()
               augroup END
             ]])
-        --[[ " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").set_inlay_hints() ]]
-        --[[ " autocmd CursorHold,CursorHoldI <buffer> lua require("rust-tools.inlay_hints").enable() ]]
         client.server_capabilities.semanticTokensProvider = nil
-        -- local cb = vim.lsp.handlers["$/progress"]
-        -- vim.lsp.handlers["$/progress"] = function(...)
-        --     cb(...)
-        --     local arg = select(4, ...)
-        --     if type(arg) ~= 'number' then
-        --         local function init_lens(_, msg, _)
-        --             local key = msg.token
-        --             local val = msg.value
-        --
-        --             if key then
-        --                 if val then
-        --                     if val.kind == 'end' then
-        --                         vim.lsp.buf_request(0, "textDocument/codeLens", { textDocument = require("vim.lsp.util").make_text_document_params(0) })
-        --                     end
-        --                 end
-        --             end
-        --         end
-        --
-        --         init_lens(...)
-        --     end
-        -- end
     end
     if client.name == "omnisharp" then
         client.server_capabilities.semanticTokensProvider.legend = {
@@ -135,6 +110,9 @@ M.on_attach = function(client, bufnr)
         }
     end
     -- lsp_keymaps(bufnr)
+    require("user.lsp.keymaps").unbind_init(bufnr)
+    require("user.lsp.keymaps").bind_default_lsp(bufnr)
+    -- require("which-key").load()
     lsp_highlight_document(client)
 end
 

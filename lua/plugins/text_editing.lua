@@ -8,6 +8,7 @@ return {
         "folke/todo-comments.nvim", -- simple text based TODO mgnt
         -- TODO: modify the event to lazy load also on non-blocking `OnInsertEnter`
         cmd = "TodoTelescope",
+        event = "LazyFile",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             -- your configuration comes here

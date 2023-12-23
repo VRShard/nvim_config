@@ -95,7 +95,14 @@ M.setup = function(_, opts)
     local_opt = vim.tbl_deep_extend("force", opts, local_opt)
     local extension_path = user_home .. "/.local/share/nvim/mason/packages/codelldb/extension/"
     local codelldb_path = extension_path .. 'adapter/codelldb'
-    local liblldb_path = extension_path .. 'lldb/lib/liblldb.dylib'
+    local liblldb_path = ""
+    if vim.loop.os_uname().sysname:find("Windows") then
+        liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
+    elseif vim.fn.has("mac") == 1 then
+        liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+    else
+        liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+    end
     local final_opts = {
         tools = {
             -- autoSetHints = true,

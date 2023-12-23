@@ -22,8 +22,8 @@ opts.capabilities = vim.tbl_extend('keep', opts.capabilities or {}, lsp_status.c
 require("user.lsp.settings.sumneko_lua").setup(lspconfig, opts)
 -- lspconfig.lua_ls.setup(opts) 
 
--- require("user.lsp.settings.rust_analyzer").setup(lspconfig, opts)
-lspconfig.rust_analyzer.setup(opts) 
+require("user.lsp.settings.rust_analyzer").setup(lspconfig, opts)
+-- lspconfig.rust_analyzer.setup(opts) 
 
 lspconfig.svelte.setup(opts)
 
