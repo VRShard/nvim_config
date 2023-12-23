@@ -32,7 +32,13 @@ return {
             require("user.configs.telescope")
         end
     },
-    { 'nvim-telescope/telescope-ui-select.nvim' },
+    {
+        'nvim-telescope/telescope-ui-select.nvim',
+        -- dependencies = {
+        --     'nvim-telescope/telescope.nvim', -- file finding
+        -- },
+        event = "VeryLazy",
+    },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
     {
@@ -87,7 +93,7 @@ return {
             require("user.configs.diffview")
         end
     },
-    { 
+    {
         'nvim-treesitter/nvim-treesitter', -- Tree-sitter
         event = { "LazyFile", "VeryLazy" },
         build = ":TSUpdate",
@@ -98,4 +104,47 @@ return {
     {
         'nvim-treesitter/playground'
     },
+    {
+        'nvimdev/dashboard-nvim',
+        dependencies = { {'nvim-tree/nvim-web-devicons'}},
+        -- event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    week_header = {
+                        enable = true,
+                    },
+                    shortcut = {
+                        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
+                        {
+                            icon = ' ',
+                            icon_hl = '@variable',
+                            desc = 'Files',
+                            group = 'Label',
+                            action = 'Telescope find_files',
+                            key = 'f',
+                        },
+                        {
+                            desc = ' Apps',
+                            group = 'Directory',
+                            action = 'Telescope app',
+                            key = 'a',
+                        },
+                        {
+                            desc = ' dotfiles',
+                            group = 'Number',
+                            action = 'Telescope dotfiles',
+                            key = 'd',
+                        },
+                    },
+                },
+                hide = {
+                    -- this is taken care of by lualine
+                    -- enabling this messes up the actual laststatus setting after loading a file
+                    statusline = false,
+                },
+            }
+        end,
+    }
 }

@@ -49,9 +49,9 @@ return {
                 highlight = "LineNr",
                 priority = 1024,
                 include = {
-                    node_type = {
-                        ["*"] = { "*" },
-                    },
+                    -- node_type = {
+                    --     ["*"] = { "*" },
+                    -- },
                 },
             },
             exclude = {

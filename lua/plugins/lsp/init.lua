@@ -25,6 +25,7 @@ return {
     },
     {
         "ray-x/lsp_signature.nvim",
+        event = "InsertEnter",
         config = function()
             require("lsp_signature").setup()
         end
@@ -38,4 +39,7 @@ return {
     {
         "nvim-lua/lsp-status.nvim"
     },  -- check alternatives
+    {
+        "glepnir/lspsaga.nvim",
+    },
 }
