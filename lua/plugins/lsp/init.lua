@@ -1,11 +1,11 @@
 return {
     {
-        "neovim/nvim-lspconfig", -- enable LSP
+        "neovim/nvim-lspconfig",       -- enable LSP
         dependencies = {
             "williamboman/mason.nvim", -- simple to use language server installer
             {
                 'hrsh7th/cmp-nvim-lua'
-            },  -- perhaps should not be here
+            }, -- perhaps should not be here
         },
         event = { "LazyFile" },
         config = function()
@@ -13,9 +13,12 @@ return {
         end
     },
     {
-        "williamboman/mason.nvim", -- simple to use language server installer
+        "williamboman/mason.nvim",           -- simple to use language server installer
+        dependencies = {
+            'nvim-telescope/telescope-ui-select.nvim',
+        },
         cmd = "Mason",
-        config = function ()
+        config = function()
             require("mason").setup({
                 ui = {
                     border = "rounded",
@@ -35,10 +38,10 @@ return {
     },
     {
         "folke/neodev.nvim"
-    },  -- perhaps should not be here
+    }, -- perhaps should not be here
     {
         "nvim-lua/lsp-status.nvim"
-    },  -- check alternatives
+    }, -- check alternatives
     {
         "glepnir/lspsaga.nvim",
     },

@@ -3,7 +3,7 @@ return {
         'akinsho/bufferline.nvim', -- buffer status for better visibility
         branch = "main",
         event = "VeryLazy",
-        dependencies = { 
+        dependencies = {
             'nvim-tree/nvim-web-devicons',
             "sainnhe/gruvbox-material",
         },
@@ -13,7 +13,7 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim', -- status line
-        dependencies = { 
+        dependencies = {
             'nvim-tree/nvim-web-devicons',
             "sainnhe/gruvbox-material",
             opt = true
@@ -34,10 +34,10 @@ return {
     },
     {
         'nvim-telescope/telescope-ui-select.nvim',
-        -- dependencies = {
-        --     'nvim-telescope/telescope.nvim', -- file finding
-        -- },
-        event = "VeryLazy",
+        dependencies = {
+            'nvim-telescope/telescope.nvim', -- file finding
+        },
+        -- event = "VeryLazy",
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
@@ -80,7 +80,7 @@ return {
     },
     {
         'lewis6991/gitsigns.nvim',
-        event = "VeryLazy",
+        event = "LazyFile",
         config = function()
             require('gitsigns').setup()
         end,
@@ -89,7 +89,7 @@ return {
         'sindrets/diffview.nvim',
         -- event = "UIEnter",
         cmd = "DiffviewToggle",
-        config = function ()
+        config = function()
             require("user.configs.diffview")
         end
     },
@@ -106,7 +106,7 @@ return {
     },
     {
         'nvimdev/dashboard-nvim',
-        dependencies = { {'nvim-tree/nvim-web-devicons'}},
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } },
         -- event = 'VimEnter',
         config = function()
             require('dashboard').setup {
