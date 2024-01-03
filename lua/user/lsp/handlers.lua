@@ -86,10 +86,9 @@ end
 M.on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
     vim.lsp.inlay_hint.enable(bufnr, false)
-    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
-    --     { noremap = true, silent = true, desc = "Toggle inlay hint" })
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+        { noremap = true, silent = true, desc = "Toggle inlay hint" })
     if client.name == "rust_analyzer" then
-    vim.keymap.set("n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>", { noremap = true, silent = true, desc = "Toggle inlay hint", buffer = bufnr })
         vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
         vim.cmd([[
               augroup change_inlayHinthand
@@ -97,7 +96,7 @@ M.on_attach = function(client, bufnr)
                 autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.codelens.refresh()
               augroup END
             ]])
-        client.server_capabilities.semanticTokensProvider = nil
+        -- client.server_capabilities.semanticTokensProvider = nil
     end
     if client.name == "omnisharp" then
         client.server_capabilities.semanticTokensProvider.legend = {
