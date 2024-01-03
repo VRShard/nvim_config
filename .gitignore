@@ -47,3 +47,4 @@ plugin/packer_compiled.lua
 
 /*.png
 neovide_backtraces.log
+lazy-lock.json
