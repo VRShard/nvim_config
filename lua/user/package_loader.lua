@@ -24,10 +24,10 @@ end
 require("utils.custom_events").lazy_file()
 
 -- Install your plugins here
+-- Obsolete now
 local plugins_map = require("plugins.core")
 package_manager.setup({
     spec = {
-        plugins_map, -- should procedually be obsolete
         { import = "plugins" },
         { import = "plugins.lsp" },
         { import = "plugins.lsp.langs" },
