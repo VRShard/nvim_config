@@ -51,7 +51,7 @@ end
 --    autocmd BufWinEnter ?* loadview
 --  augroup END
 --]]
-vim.cmd [[set autoread | au CursorHold * checktime]]
+vim.cmd [[set autoread | au CursorHold * if expand("%f") != "[Command Line]" | checktime | endif]]
 
 
 vim.cmd "au BufNewFile,BufRead *.wgsl set filetype=wgsl"

@@ -1,5 +1,13 @@
 require("nvim-treesitter.configs").setup({
-    -- ensure_installed = "maintained",
+    ensure_installed = {  
+        "bash",
+        "c", "cmake", "cpp",
+        "diff", "dockerfile", "fish", "glsl", "go", "html", "javascript", "json",
+        "lua", "luadoc", "markdown", "markdown_inline",
+        "ninja", "org", "python", "query",
+        "rust",
+        "svelte", "toml", "typescript", "vim", "vimdoc", "wgsl", "yaml", "zig"
+    },
     sync_install = false,
     ignore_install = { "vala" }, -- List of parsers to ignore installing
     highlight = {
