@@ -50,7 +50,6 @@ local config = {
     popup_border_style = "rounded", -- "double", "none", "rounded", "shadow", "single" or "solid" or "NC"
     resize_timer_interval = 500, -- in ms, needed for containers to redraw right aligned and faded content
     -- set to -1 to disable the resize timer entirely
-    --                           -- NOTE: this will speed up to 50 ms for 1 second following a resize
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     sort_function = nil , -- uses a custom function for sorting files and directories in the tree
     use_popups_for_input = true, -- If false, inputs will use vim.ui.input() instead of custom floats.
@@ -231,7 +230,7 @@ local config = {
         git_status = {
             symbols = {
                 -- Change type
-                added     = "✚", -- NOTE: you can set any of these to an empty string to not show them
+                added     = "✚", -- you can set any of these to an empty string to not show them
                 deleted   = "✖",
                 modified  = "",
                 renamed   = "󰁕",
@@ -687,6 +686,3 @@ local config = {
     },
 }
 require("neo-tree").setup(config)
-
--- TODO: create a post-load neovim script to load those commands from plugins
-vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
