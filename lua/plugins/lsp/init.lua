@@ -29,8 +29,12 @@ return {
     {
         "ray-x/lsp_signature.nvim",
         event = "InsertEnter",
-        config = function()
-            require("lsp_signature").setup()
+        opts = {
+            floating_window = false,
+            floating_window_above_cur_line = false,
+        },
+        config = function(_, opts)
+            require("lsp_signature").setup(opts)
         end
     },
     {
