@@ -99,6 +99,7 @@ local mappings = {
     ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
     ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
     ["u"] = { "<cmd>MundoToggle<cr>", "Toggle UndoTree View" },
+    ["L"] = { "<cmd>Mason<cr>", "Installer Info" },
 
     p = {
         name = "Lazy",
