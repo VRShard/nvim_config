@@ -26,9 +26,20 @@ saga.setup({
     -- preview lines of lsp_finder and definition preview
     max_preview_lines = 10,
     -- use emoji lightbulb in default
+    code_action = {
+        num_shortcut = true,
+        show_server_name = true,
+        extend_gitsigns = false,
+        only_in_cursor = true,
+        max_height = 0.3,
+        keys = {
+            quit = 'q',
+            exec = '<CR>',
+        },
+    },
     code_action_icon = "💡",
     -- if true can press number to execute the codeaction in codeaction window
-    code_action_num_shortcut = true,
+    -- code_action_num_shortcut = true,
     -- same as nvim-lightbulb but async
     lightbulb = {
         enable = true,
@@ -59,10 +70,10 @@ saga.setup({
         tabe = "t",
         quit = "q",
     },
-    code_action_keys = {
-        quit = "q",
-        exec = "<CR>",
-    },
+    -- code_action_keys = {
+    --     quit = "q",
+    --     exec = "<CR>",
+    -- },
     definition_action_keys = {
         edit = '<C-c>o',
         vsplit = '<C-c>v',

@@ -9,7 +9,8 @@ local opts = {
 local mappings = {
     ["l"] = {
         name = "+LSP",
-        a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+        -- a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+        a = { '<cmd>lua require("actions-preview").code_actions()<CR>', "Code Action" },
         r = { "<cmd>Lspsaga rename<CR>", "Rename" },
         --[[ h = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Finder" }, ]]
         f = { "<cmd>lua vim.lsp.buf.format { async=true }<cr>", "Format" },

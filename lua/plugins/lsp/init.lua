@@ -6,6 +6,9 @@ return {
             {
                 'hrsh7th/cmp-nvim-lua'
             }, -- perhaps should not be here
+            {
+                "aznhe21/actions-preview.nvim",
+            },
         },
         event = { "LazyFile" },
         config = function()
