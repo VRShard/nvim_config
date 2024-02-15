@@ -2,7 +2,8 @@ return {
     {
         'marko-cerovac/material.nvim',
         config = true,
-        enabled = false,
+        event = "VeryLazy",
+        enabled = true,
         opts = {
             contrast = {
                 sidebars = true,            -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
