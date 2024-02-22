@@ -66,7 +66,8 @@ cmp.setup {
         ["<CR>"] = cmp.mapping.confirm { select = false },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_next_item()
+                -- TODO: wait for issue #1780 clarification in `nvim-cmp`
+                cmp.select_next_item({ behavior = require("cmp.types").cmp.SelectBehavior.Select })
             elseif luasnip.expandable() then
                 luasnip.expand()
             elseif luasnip.expand_or_jumpable() then
@@ -82,7 +83,8 @@ cmp.setup {
         }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_prev_item()
+                -- TODO: wait for issue #1780 clarification in `nvim-cmp`
+                cmp.select_prev_item({ behavior = require("cmp.types").cmp.SelectBehavior.Select })
             elseif luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else

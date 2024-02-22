@@ -31,6 +31,8 @@ return {
     },
     {
         "ray-x/lsp_signature.nvim",
+        enabled = false,
+        -- TODO: replace with another signature completion source
         event = "InsertEnter",
         opts = {
             floating_window = false,
