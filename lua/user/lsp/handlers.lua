@@ -85,11 +85,11 @@ end
 
 M.on_attach = function(client, bufnr)
     lsp_status.on_attach(client)
-    vim.lsp.inlay_hint.enable(bufnr, false)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>",
+    vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
         { noremap = true, silent = true, desc = "Toggle inlay hint" })
     if client.name == "rust_analyzer" then
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
+        -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>:RustHoverActions<CR>", { noremap = true, silent = true })
         vim.cmd([[
               augroup change_inlayHinthand
                 autocmd! * <buffer>

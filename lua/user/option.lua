@@ -35,7 +35,7 @@ local options = {
     -- sidescrolloff = 8,
     linebreak = true,
     --[[ guifont = "Operator Mono SSm Lig Book:h14", -- the font used in graphical neovim applications ]]
-    guifont = "IBM Plex Mono Text,Operator Mono SSm Lig Book,Symbols Nerd Font:h14",
+    -- guifont = "IBM Plex Mono Text,Operator Mono SSm Lig Book,Symbols Nerd Font:h14",
 }
 
 --vim.opt.shortmess:append "c"

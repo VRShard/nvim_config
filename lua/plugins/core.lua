@@ -33,6 +33,9 @@ return {
         end
     },
     {
+        'echasnovski/mini.icons',
+    },
+    {
         "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     },
     -- {
