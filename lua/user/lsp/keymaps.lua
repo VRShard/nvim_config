@@ -69,7 +69,7 @@ M.bind_default_lsp = function (bufnr)
         noremap = true, -- use `noremap` when creating keymaps
         nowait = true, -- use `nowait` when creating keymaps
     }
-    require("which-key").register(mappings, opts2)
+    -- require("which-key").register(mappings, opts2)
 end
 
 -- remove which-key keybinding for LspStart
@@ -85,7 +85,7 @@ M.create_auto_cmd = function ()
     local load = function(ev)
         if not M.buf_has_lsp() then
             M.bind_init(ev.buf)
-            require("which-key").setup()
+            -- require("which-key").setup()
         end
         vim.api.nvim_exec_autocmds("CursorMoved", { modeline = false })
     end
