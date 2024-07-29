@@ -8,10 +8,11 @@ local opts = {
 }
 local mappings = {
     ["l"] = {
-        name = "+LSP",
+        name = "LSP",
         -- a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
         a = { '<cmd>lua require("actions-preview").code_actions()<CR>', "Code Action" },
         r = { "<cmd>Lspsaga rename<CR>", "Rename" },
+        h = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle inlay hint" },
         --[[ h = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Finder" }, ]]
         f = { "<cmd>lua vim.lsp.buf.format { async=true }<cr>", "Format" },
         l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
