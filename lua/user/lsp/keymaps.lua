@@ -69,7 +69,21 @@ M.bind_default_lsp = function (bufnr)
         noremap = true, -- use `noremap` when creating keymaps
         nowait = true, -- use `nowait` when creating keymaps
     }
+    require("utils.util_helpers").wk2_to_vanilla(mappings, opts2.prefix, opts2)
     -- require("which-key").register(mappings, opts2)
+end
+
+-- bind default lsp config for now
+M.unbind_default_lsp = function (bufnr)
+    local opts2 = {
+        mode = "n", -- NORMAL mode
+        prefix = "<leader>",
+        buffer = bufnr, -- for current buffer only
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = true, -- use `nowait` when creating keymaps
+    }
+    require("utils.util_helpers").del_wk2_to_vanilla(mappings, opts2.prefix, opts2)
 end
 
 -- remove which-key keybinding for LspStart
