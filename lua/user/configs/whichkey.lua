@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local setup = {
+    preset = "helix",
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
         registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -26,28 +27,39 @@ local setup = {
     -- add operators that will trigger motion and text object completion
     -- to enable all native operators, set the preset / operators plugin above
     -- operators = { gc = "Comments" },
-    key_labels = {
-        -- override the label used to display some keys. It doesn't effect WK in any other way.
-        -- For example:
-        -- ["<space>"] = "SPC",
-        -- ["<cr>"] = "RET",
-        -- ["<tab>"] = "TAB",
+    replace = {
+        key = {
+            -- override the label used to display some keys. It doesn't effect WK in any other way.
+            -- For example:
+            {"<[Ss]pace>" ,"SPC"},
+            {"<[Cc]r>"    ,"RET"},
+            {"<[Tt]ab>"   ,"TAB"},
+        }
     },
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
         group = "+", -- symbol prepended to a group
     },
-    popup_mappings = {
+    keys = {
         scroll_down = "<c-d>", -- binding to scroll down inside the popup
         scroll_up = "<c-u>", -- binding to scroll up inside the popup
     },
-    window = {
+    win = {
+        -- don't allow the popup to overlap with the cursor
+        no_overlap = true,
+        -- width = 1,
+        -- height = { min = 4, max = 25 },
+        -- col = 0,
+        -- row = math.huge,
         border = "rounded", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 5,
+        title = true,
+        title_pos = "center",
+        padding = { 1, 2 }, -- extra window padding [top/bottom, left/right]
+        wo = {
+            winblend = 5,
+        },
+        bo = {},
         zindex = 1000,
     },
     layout = {
@@ -56,18 +68,21 @@ local setup = {
         spacing = 3, -- spacing between columns
         align = "left", -- align columns left, center or right
     },
-    ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
+    filter = function(mapping)
+        -- example to exclude mappings without a description
+        -- return mapping.desc and mapping.desc ~= ""
+        return true
+    end,
+    -- hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate -- depreciated
     show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
-    -- triggers = {"<leader>"} -- or specify a list manually
-    triggers_blacklist = {
+    -- triggers = "auto", -- automatically setup triggers -- depreciated
+    --[[ triggers_blacklist = {
         -- list of mode / prefixes that should never be hooked by WhichKey
         -- this is mostly relevant for key maps that start with a native binding
         -- most people should not need to change this
         i = { "j", "k" },
         v = { "j", "k" },
-    },
+    }, ]] -- depreciated
 }
 
 local opts = {
@@ -147,7 +162,7 @@ local mappings = {
         t = { "<cmd>TodoTelescope<cr>", "Toggle Todo in Telescope View" },
     },
 
-    t = {
+    T = {
         name = "Terminal",
         n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
         u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
@@ -160,4 +175,5 @@ local mappings = {
 }
 
 which_key.setup(setup)
-which_key.register(mappings, opts)
+require("utils.util_helpers").wk2_to_vanilla(mappings, opts.prefix, opts)
+-- which_key.register(mappings, opts)
