@@ -29,7 +29,8 @@ lspconfig.svelte.setup(opts)
 
 -- lspconfig.sourcekit.setup(opts)
 
-lspconfig.tsserver.setup(opts)
+-- lspconfig.tsserver.setup(opts)
+lspconfig.ts_ls.setup(opts)
 
 lspconfig.gopls.setup(opts)
 
