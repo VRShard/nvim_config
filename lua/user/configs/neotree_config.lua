@@ -31,7 +31,7 @@ local config = {
     enable_modified_markers = true, -- Show markers for files with unsaved changes.
     enable_opened_markers = true,   -- Enable tracking of opened files. Required for `components.name.highlight_opened_files`
     enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
-    enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
+    -- enable_normal_mode_for_inputs = false, -- Enable normal mode for input dialogs.
     git_status_async = true,
     -- These options are for people with VERY large git repos
     git_status_async_options = {
@@ -98,7 +98,15 @@ local config = {
         highlight_separator_active = "NeoTreeTabSeparatorActive",
     },
     --
-    --event_handlers = {
+    event_handlers = {
+        {
+            event = "neo_tree_popup_input_ready",
+            ---@param args { bufnr: integer, winid: integer }
+            handler = function(args)
+                vim.cmd("stopinsert")
+                vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+            end,
+        }
     --  {
     --    event = "before_render",
     --    handler = function (state)
@@ -169,7 +177,7 @@ local config = {
     --     vim.cmd("wincmd =")
     --   end
     -- }
-    --},
+    },
     default_component_configs = {
         container = {
             enable_character_fade = true,
