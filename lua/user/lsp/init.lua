@@ -14,7 +14,9 @@ vim.api.nvim_create_autocmd("LspDetach", {
             return
         end
         for k,_ in pairs(client.attached_buffers) do
-            require("user.lsp.keymaps").unbind_default_lsp(k)
+            pcall(function ()
+                require("user.lsp.keymaps").unbind_default_lsp(k)
+            end)
             vim.api.nvim_buf_set_keymap(k, "n", "<leader>" .. "l", "<cmd>LspStart<cr>", {noremap = true,nowait = true,desc = "load lsp"})
         end
         vim.schedule_wrap(require("notify"))("lsp detached: " .. (client and client.name or ""))
