@@ -4,7 +4,8 @@ require("nvim-treesitter.configs").setup({
         "c", "cmake", "cpp",
         "diff", "dockerfile", "fish", "glsl", "go", "html", "javascript", "json",
         "lua", "luadoc", "markdown", "markdown_inline",
-        "ninja", "org", "python", "query",
+        -- "ninja", "org", "python", "query",
+        "ninja", "python", "query",
         "rust",
         "svelte", "toml", "typescript", "vim", "vimdoc", "wgsl", "yaml", "zig"
     },
